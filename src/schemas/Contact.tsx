@@ -1,4 +1,5 @@
 import {z} from 'zod'
+import {contactTypes} from "../components/Constants.ts";
 
 export const ContactSchema = z.object({
     name: z
@@ -13,6 +14,10 @@ export const ContactSchema = z.object({
         .string()
         .min(1, {message: 'El correo es obligatorio'})
         .email({message: 'El correo no es válido'}),
+    type: z
+        .enum(contactTypes),
 })
 
-export type Contact = z.infer<typeof ContactSchema> & {id: string}
+export type ContactFormData = z.infer<typeof ContactSchema>;
+export type Contact = ContactFormData & { id: string };
+

@@ -14,10 +14,11 @@ const ContactTable = ({contacts, onClick}: Props) => {
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
                 <th scope="col">Correo</th>
+                <th scope="col">Tipo</th>
             </tr>
             </thead>
             <tbody>
-            {contacts.map(({id, name, lastname, email}) => (
+            {contacts.map(({id, name, lastname, email, type}) => (
                 <tr
                     style={{cursor: 'pointer'}}
                     key={id}
@@ -26,6 +27,7 @@ const ContactTable = ({contacts, onClick}: Props) => {
                     <td>{name}</td>
                     <td>{lastname}</td>
                     <td>{email}</td>
+                    <td>{type}</td>
                 </tr>
             ))}
             </tbody>

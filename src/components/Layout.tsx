@@ -1,19 +1,19 @@
 import ContactForm from "./ContactForm.tsx";
 import ContactTable from "./ContactTable.tsx";
 import {useState} from "react";
-import {Contact} from "../schemas/Contact.tsx";
+import {Contact, ContactFormData} from "../schemas/Contact.tsx";
 
 const Layout = () => {
-
     const [contacts, setContacts] = useState<Contact[]>([]);
-    const addContact = (contact: Contact) => {
+
+    const addContact = (contact: ContactFormData) => {
         setContacts([
             {
                 ...contact,
                 id: Math.random().toString(16).slice(2),
             },
             ...contacts,
-        ])
+        ]);
     };
 
     const deleteContact = (id: string) => setContacts(contacts.filter(c => c.id !== id));
