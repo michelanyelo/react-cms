@@ -13,8 +13,7 @@ export const ContactSchema = z.object({
         .string()
         .min(1, {message: 'El correo es obligatorio'})
         .email({message: 'El correo no es válido'}),
-    id: z
-        .string().uuid()
+    id: z.string().uuid().optional(),
 })
 
-export type Contact = z.infer<typeof ContactSchema> & { id: string }
+export type Contact = z.infer<typeof ContactSchema>
