@@ -1,8 +1,35 @@
-const ContactTable = () => {
-    return (
-        <div>
+import {Contact} from "../schemas/Contact.tsx";
 
-        </div>
+interface Props {
+    contacts: Contact[];
+    onClick: (id: string) => void;
+}
+
+const ContactTable = ({contacts, onClick}: Props) => {
+    return (
+        <table className="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Correo</th>
+            </tr>
+            </thead>
+            <tbody>
+            {contacts.map(({id, name, lastname, email}) => (
+                <tr
+                    style={{cursor: 'pointer'}}
+                    key={id}
+                    onClick={() => onClick(id)}>
+                    <td>{id}</td>
+                    <td>{name}</td>
+                    <td>{lastname}</td>
+                    <td>{email}</td>
+                </tr>
+            ))}
+            </tbody>
+        </table>
     );
 };
 
