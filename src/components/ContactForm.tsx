@@ -23,7 +23,8 @@ const ContactForm = ({onSubmit}: Props) => {
                 <Input name={"email"} type={"email"}>Correo</Input>
                 <Select options={contactTypes} defaultMessage={"-- Selecciona tipo --"} label={"Tipo de contacto"}
                         name={"type"}/>
-                <Button>Enviar</Button>
+                <Button type={"submit"}>Enviar</Button>
+                <Button variant={"secondary"} onClick={() => methods.reset()} type={"reset"}>Limpiar</Button>
             </form>
         </FormProvider>
     );

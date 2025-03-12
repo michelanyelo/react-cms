@@ -1,15 +1,22 @@
-import {ReactNode} from "react";
+import {ReactNode, MouseEvent} from "react";
 
-type Variant = "primary" | "secondary" | "warning";
+type variant = "primary" | "secondary" | "warning";
+type buttonType = "button" | "submit" | "reset";
 
 interface Props {
-    variant?: Variant;
+    variant?: variant;
     children: ReactNode;
+    onClick?: (e: MouseEvent) => void;
+    type?: buttonType;
 }
 
-const Button = ({variant = "primary", children}: Props) => {
+const Button = ({variant = "primary", children, onClick, type = "button"}: Props) => {
     return (
-        <button className={`btn btn-${variant}`}>
+        <button
+            onClick={onClick}
+            className={`btn btn-${variant}`}
+            type={type}
+        >
             {children}
         </button>
     );

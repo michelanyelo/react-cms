@@ -21,7 +21,7 @@ const Select = ({options, defaultMessage, label, name}: Props) => {
                     <option value={o} key={o}>{o}</option>
                 ))}
             </select>
-            {error && <div className="invalid-feedback">{error.message}</div>}
+            {error && <div className="text-danger">{error.message}</div>}
         </div>
     );
 };
