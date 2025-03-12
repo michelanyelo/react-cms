@@ -1,15 +1,18 @@
-import {useForm} from "react-hook-form";
+import {FormProvider, useForm} from "react-hook-form";
+import Input from "./Input.tsx";
 
 const ContactForm = () => {
     const methods = useForm()
 
     return (
-        <form onSubmit={methods.handleSubmit((data) => console.log(data))}>
-            <div className="mb-3">
-                <label htmlFor="name" className="form-label">Nombre</label>
-                <input {...methods.register('name')} type="text" className="form-control" id="name"/>
-            </div>
-        </form>
+        <FormProvider {...methods}>
+            <form onSubmit={methods.handleSubmit((data) => console.log(data))}>
+                <Input name={"name"} type={"text"}>Nombre</Input>
+                <Input name={"lastname"} type={"text"}>Apellido</Input>
+                <Input name={"email"} type={"email"}>Correo</Input>
+                <button>Enviar</button>
+            </form>
+        </FormProvider>
     );
 };
 
